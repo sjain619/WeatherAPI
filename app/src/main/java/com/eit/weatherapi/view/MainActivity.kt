@@ -14,14 +14,12 @@ import com.eit.weatherapi.util.Constants
 import com.eit.weatherapi.view.adapter.WeatherAdapter
 import com.eit.weatherapi.viewmodel.WeatherViewModel
 
-class MainActivity : AppCompatActivity(), WeatherAdapter.WeatherDelegate {
+class MainActivity : AppCompatActivity(){
 
     private val viewModel: WeatherViewModel by viewModels()
 
     private lateinit var cityName: EditText
     private lateinit var lookup: Button
-
-    private var weatherFragment: WeatherListFragment = WeatherListFragment()
     //weather without Layout
 
     private lateinit var weather_frame : FrameLayout
@@ -35,30 +33,18 @@ class MainActivity : AppCompatActivity(), WeatherAdapter.WeatherDelegate {
             viewModel.getSearchResults(cityName.text.toString(), Constants.API_KEY)
         }
         viewModel.weatherLiveData.observe(this, androidx.lifecycle.Observer {
-            Log.d("TAG_X", "Results obtained...${it[0].dt_txt}")
+            Log.d("TAG_X", "Results obtained..")
+            //progress bar
             weather_frame.visibility = View.VISIBLE
-            //var weatherFragment: WeatherListFragment = WeatherListFragment()
 
-            weatherFragment.arguments = Bundle()//adding a Bundle
-            val dataSet = Bundle()
-            dataSet.putParcelableArrayList("KEY", )
-            val f=WeatherListFragment.newInstance(dataSet)
-
-
+            val fragment = WeatherListFragment.newInstance(it)
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.frame_weather, f)
+                .add(R.id.frame_weather, fragment)
                 .commit()//async
 
-//            weatherAdapter.updateWeatherList(it)
         })
     }
 
-//    override fun showWeatherDetails(weatherResult: WeatherResult) {
-//        val bundle =  Bundle()
-//
-//        bundle.putParcelableArrayList("KEY", weatherResult.)
-//        weatherFragment.arguments = bundle
-//
-//    }
+
 }

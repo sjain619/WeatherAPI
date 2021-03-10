@@ -1,11 +1,14 @@
 package com.eit.weatherapi.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.eit.weatherapi.R
 import com.eit.weatherapi.model.WeatherResult
+import kotlinx.android.synthetic.main.details_fragment_layout.*
 
 class DetailsFragment: Fragment() {
 
@@ -14,20 +17,29 @@ class DetailsFragment: Fragment() {
     private lateinit var weatherName : TextView
     private lateinit var weatherType : TextView
 
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.details_fragment_layout, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        temp = view.findViewById(R.id.tv_tempDigit)
+        feelsLike = view.findViewById(R.id.tv_feels)
+        weatherName = view.findViewById(R.id.tv_weatherName_detail)
+        weatherType = view.findViewById(R.id.tv_weatherType)
+        close_fragment.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
         arguments?.let {
 
             val details = it.get("KEY") as WeatherResult
             displayDetails(details)
         }
-        temp = view.findViewById(R.id.tv_tempDigit)
-        feelsLike = view.findViewById(R.id.tv_feels)
-        weatherName = view.findViewById(R.id.tv_weatherName_detail)
-        weatherType = view.findViewById(R.id.tv_weatherType)
+
 
 
     }

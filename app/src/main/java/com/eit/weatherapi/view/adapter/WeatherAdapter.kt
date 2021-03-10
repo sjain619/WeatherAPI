@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eit.weatherapi.R
 import com.eit.weatherapi.model.WeatherResult
 
-class WeatherAdapter(private var weatherList: List<WeatherResult>, val weatherDelegate: WeatherDelegate): RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+class WeatherAdapter(private var weatherList: List<WeatherResult>,
+                     val weatherDelegate: WeatherDelegate):
+    RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     interface WeatherDelegate {
         fun showWeatherDetails(weatherResult: WeatherResult)
     }
-
-
 
     fun updateWeatherList(weatherList: List<WeatherResult>) {
         this.weatherList = weatherList
@@ -22,9 +22,16 @@ class WeatherAdapter(private var weatherList: List<WeatherResult>, val weatherDe
     }
 
     class WeatherViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val weather: TextView = itemView.findViewById(R.id.tv_weatherName)
-        val tempDigit: TextView = itemView.findViewById(R.id.tv_Temp)
+       private val weather: TextView = itemView.findViewById(R.id.tv_weatherName)
+       private val tempDigit: TextView = itemView.findViewById(R.id.tv_Temp)
 
+        fun onBind(dataItem: WeatherResult, delegate: WeatherDelegate){
+            weather.text = dataItem.weather[0].main
+            tempDigit.text = dataItem.main.temp.toString()
+            itemView.setOnClickListener{
+                delegate.showWeatherDetails(dataItem)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
@@ -36,12 +43,6 @@ class WeatherAdapter(private var weatherList: List<WeatherResult>, val weatherDe
     override fun getItemCount(): Int = weatherList.size
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        val weatherItem = weatherList[position]
-
-        holder.apply {
-            weather.text = weatherItem.weather[0].main
-            tempDigit.text = weatherItem.main.temp.toString()
-
-        }
+        holder.onBind(weatherList[position], weatherDelegate)
     }
 }

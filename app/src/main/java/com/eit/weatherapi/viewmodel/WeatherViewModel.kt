@@ -3,6 +3,7 @@ package com.eit.weatherapi.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.eit.weatherapi.model.WeatherResponse
 import com.eit.weatherapi.model.WeatherResult
 import com.eit.weatherapi.network.WeatherRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class WeatherViewModel: ViewModel() {
     private val compositeDisposable: CompositeDisposable =  CompositeDisposable()
 
-    val weatherLiveData: MutableLiveData<List<WeatherResult>> = MutableLiveData()
+    val weatherLiveData: MutableLiveData<WeatherResponse> = MutableLiveData()
 
     private val weatherRetrofit: WeatherRetrofit = WeatherRetrofit()
 
@@ -27,7 +28,7 @@ class WeatherViewModel: ViewModel() {
 
 
                     if(it.list.isNotEmpty())
-                        weatherLiveData.postValue(it.list)
+                        weatherLiveData.postValue(it)
                     compositeDisposable.clear()
                 }, {
 
