@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(){
         }
         viewModel.weatherLiveData.observe(this, androidx.lifecycle.Observer {
             Log.d("TAG_X", "Results obtained..")
+            cityName.setText(" ")
             //progress bar
 //            weather_frame.visibility = View.VISIBLE
 

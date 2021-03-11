@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.eit.weatherapi.R
 import com.eit.weatherapi.model.WeatherResult
@@ -16,6 +17,7 @@ class DetailsFragment: Fragment() {
     private lateinit var feelsLike : TextView
     private lateinit var weatherName : TextView
     private lateinit var weatherType : TextView
+    private lateinit var detailLayout: ConstraintLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +33,8 @@ class DetailsFragment: Fragment() {
         feelsLike = view.findViewById(R.id.tv_feels)
         weatherName = view.findViewById(R.id.tv_weatherName_detail)
         weatherType = view.findViewById(R.id.tv_weatherType)
+        detailLayout = view.findViewById(R.id.detail_layout)
+
         close_fragment.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
@@ -50,5 +54,13 @@ class DetailsFragment: Fragment() {
         feelsLike.text = weatherItem.main.feels_like.toString()
         weatherName.text = weatherItem.weather[0].main
         weatherType.text = weatherItem.weather[0].description
+
+        when (weatherItem.weather[0].main){
+            "Clouds" -> detailLayout.setBackgroundResource(R.drawable.cloudy)
+            "Clear" -> detailLayout.setBackgroundResource(R.drawable.sunny)
+            "Rain" -> detailLayout.setBackgroundResource(R.drawable.rainy)
+            "Snow" -> detailLayout.setBackgroundResource(R.drawable.snowy)
+            else -> detailLayout.setBackgroundResource(R.drawable.night)
+        }
     }
 }

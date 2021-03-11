@@ -8,21 +8,47 @@
     android:clickable="true"
     android:focusable="true">
 
+    <TextView
+        android:id="@+id/tv_cityTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/app_blue"
+        android:drawableStart="@drawable/ic_back"
+        android:drawablePadding="8dp"
+        android:padding="10dp"
+        android:text="City Name"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_weather"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/weather_item_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_cityTitle"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/weather_item_layout" />
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/top_guide"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.06" />-->
 
     <FrameLayout
         android:id="@+id/detail_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="8dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_cityTitle"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

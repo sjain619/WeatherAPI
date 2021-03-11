@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,6 +24,7 @@ class WeatherListFragment: Fragment(), WeatherAdapter.WeatherDelegate {
 
     private lateinit var weatherList: RecyclerView
     private lateinit var weatherAdapter: WeatherAdapter
+    private lateinit var cityTitle: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +46,8 @@ class WeatherListFragment: Fragment(), WeatherAdapter.WeatherDelegate {
         data?.let {
             weatherAdapter = WeatherAdapter(it.list, this)
             weatherList = view.findViewById(R.id.rv_weather)
+            cityTitle = view.findViewById(R.id.tv_cityTitle)
+            cityTitle.text = it.city.name
             weatherList.adapter = weatherAdapter
         }
     }

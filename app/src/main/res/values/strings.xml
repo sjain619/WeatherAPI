@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">WeatherAPI</string>
+    <string name="app_name">Mausam</string>
+    <string name="city_name">City Name</string>
+    <string name="temp">Temp:</string>
 </resources>
