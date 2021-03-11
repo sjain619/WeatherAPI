@@ -42,9 +42,9 @@
         android:id="@+id/frame_weather"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="8dp"
-        android:background="@color/white"
-        android:visibility="gone">
+        android:elevation="8dp">
+<!--        android:visibility="gone"-->
+
 
     </FrameLayout>
 

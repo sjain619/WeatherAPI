@@ -35,13 +35,15 @@ class MainActivity : AppCompatActivity(){
         viewModel.weatherLiveData.observe(this, androidx.lifecycle.Observer {
             Log.d("TAG_X", "Results obtained..")
             //progress bar
-            weather_frame.visibility = View.VISIBLE
+//            weather_frame.visibility = View.VISIBLE
 
             val fragment = WeatherListFragment.newInstance(it)
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.frame_weather, fragment)
+                .addToBackStack(fragment.tag)
                 .commit()//async
+
 
         })
     }
