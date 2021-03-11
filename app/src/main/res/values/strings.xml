@@ -2,4 +2,9 @@
     <string name="app_name">Mausam</string>
     <string name="city_name">City Name</string>
     <string name="temp">Temp:</string>
+    <string name="icon">Weather Icons</string>
+    <string name="close">Close Fragment</string>
+    <string name="feels_like">Feels Like:</string>
+    <string name="app_title">MAUSAM</string>
+    <string name="search">SEARCH</string>
 </resources>

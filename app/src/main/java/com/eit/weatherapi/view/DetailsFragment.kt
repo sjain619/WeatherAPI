@@ -11,18 +11,18 @@ import com.eit.weatherapi.R
 import com.eit.weatherapi.model.WeatherResult
 import kotlinx.android.synthetic.main.details_fragment_layout.*
 
-class DetailsFragment: Fragment() {
+class DetailsFragment : Fragment() {
 
-    private lateinit var temp : TextView
-    private lateinit var feelsLike : TextView
-    private lateinit var weatherName : TextView
-    private lateinit var weatherType : TextView
+    private lateinit var temp: TextView
+    private lateinit var feelsLike: TextView
+    private lateinit var weatherName: TextView
+    private lateinit var weatherType: TextView
     private lateinit var detailLayout: ConstraintLayout
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.details_fragment_layout, container, false)
     }
@@ -45,7 +45,6 @@ class DetailsFragment: Fragment() {
         }
 
 
-
     }
 
     private fun displayDetails(weatherItem: WeatherResult) {
@@ -55,7 +54,7 @@ class DetailsFragment: Fragment() {
         weatherName.text = weatherItem.weather[0].main
         weatherType.text = weatherItem.weather[0].description
 
-        when (weatherItem.weather[0].main){
+        when (weatherItem.weather[0].main) {
             "Clouds" -> detailLayout.setBackgroundResource(R.drawable.cloudy)
             "Clear" -> detailLayout.setBackgroundResource(R.drawable.sunny)
             "Rain" -> detailLayout.setBackgroundResource(R.drawable.rainy)

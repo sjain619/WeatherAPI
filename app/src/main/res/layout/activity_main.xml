@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sriracha"
-        android:text="MAUSAM"
+        android:text="@string/app_title"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -44,6 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:autofillHints="Enter City Name"
         android:background="@drawable/round_border"
         android:drawableEnd="@drawable/ic_search"
         android:hint="@string/city_name"
@@ -54,30 +55,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/text_layout"-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="16dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:padding="10dp"-->
-<!--        android:hint="@string/city_name"-->
-<!--        >-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/text_layout"-->
+    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:hint="@string/city_name"-->
+    <!--        >-->
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/etv_cityName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:drawableEnd="@drawable/ic_search"-->
-<!--            android:padding="8dp"-->
-<!--            android:background="@drawable/round_border"-->
-<!--            />-->
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/etv_cityName"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:drawableEnd="@drawable/ic_search"-->
+    <!--            android:padding="8dp"-->
+    <!--            android:background="@drawable/round_border"-->
+    <!--            />-->
 
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_lookUp"
@@ -87,7 +88,7 @@
         android:background="@drawable/round_bg"
         android:fontFamily="@font/sriracha"
         android:padding="10dp"
-        android:text="SEARCH"
+        android:text="@string/search"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -99,10 +100,7 @@
         android:id="@+id/frame_weather"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="8dp">
-<!--        android:visibility="gone"-->
+        android:elevation="8dp" />
 
-
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

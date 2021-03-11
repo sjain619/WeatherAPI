@@ -10,31 +10,26 @@ import com.eit.weatherapi.R
 import com.eit.weatherapi.model.WeatherResult
 
 class WeatherAdapter(private var weatherList: List<WeatherResult>,
-                     val weatherDelegate: WeatherDelegate):
-    RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+                     private val weatherDelegate: WeatherDelegate) :
+        RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     interface WeatherDelegate {
         fun showWeatherDetails(weatherResult: WeatherResult)
     }
 
-    fun updateWeatherList(weatherList: List<WeatherResult>) {
-        this.weatherList = weatherList
-        notifyDataSetChanged()
-    }
-
-    class WeatherViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-       private val weather: TextView = itemView.findViewById(R.id.tv_weatherName)
-       private val tempDigit: TextView = itemView.findViewById(R.id.tv_Temp)
+    class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val weather: TextView = itemView.findViewById(R.id.tv_weatherName)
+        private val tempDigit: TextView = itemView.findViewById(R.id.tv_Temp)
         private val weatherIcon: ImageView = itemView.findViewById(R.id.iv_weatherIcon)
 
-        fun onBind(dataItem: WeatherResult, delegate: WeatherDelegate){
+        fun onBind(dataItem: WeatherResult, delegate: WeatherDelegate) {
             weather.text = dataItem.weather[0].main
             tempDigit.text = dataItem.main.temp.toString()
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 delegate.showWeatherDetails(dataItem)
             }
 
-            when (dataItem.weather[0].main){
+            when (dataItem.weather[0].main) {
                 "Clouds" -> weatherIcon.setImageResource(R.drawable.ic_cloudy)
                 "Clear" -> weatherIcon.setImageResource(R.drawable.ic_sun)
                 "Rain" -> weatherIcon.setImageResource(R.drawable.ic_rain)
@@ -46,7 +41,7 @@ class WeatherAdapter(private var weatherList: List<WeatherResult>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.weather_item_layout, parent, false)
+                .inflate(R.layout.weather_item_layout, parent, false)
         return WeatherViewHolder(itemView)
     }
 
